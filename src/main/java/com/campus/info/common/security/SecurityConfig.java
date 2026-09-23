@@ -27,6 +27,8 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                // Druid monitoring console (protected by its own login form)
+                .antMatchers("/druid/**").permitAll()
                 // 公开接口
                 .antMatchers("/api/auth/**").permitAll()
                 // 个人中心：所有认证用户可访问
